@@ -81,7 +81,13 @@ colorscheme base16-default
 set background=dark
 
 if has('gui_running')
-    set guifont=DejaVu_Sans_Mono:h13:cANSI
+    " set guifont=DejaVu_Sans_Mono:h13:cANSI
+    set guifont=DejaVu\ Sans\ Mono\ 13
+
+    " Make shift-insert work like in Xterm
+    map <S-Insert> <MiddleMouse>
+    map! <S-Insert> <MiddleMouse>
+
 endif
 
 " Text wrapping
