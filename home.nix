@@ -20,6 +20,7 @@
   home.packages = [
     pkgs.ripgrep
     pkgs.fzf
+    pkgs.nodejs
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -77,7 +78,7 @@
     defaultEditor = true;
     plugins = [
       pkgs.vimPlugins.fzfWrapper
-      # pkgs.vimPlugins.coc-nvim
+      pkgs.vimPlugins.coc-nvim
     ];
     extraConfig = builtins.readFile ./vim/vimrc;
   };
