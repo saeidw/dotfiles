@@ -26,6 +26,20 @@
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
+    ### vimrc = {
+    ###   source = ./vim/vimrc;
+    ###   target = ".vim/vimrc";
+    ### };
+
+    coc-settings = {
+      source = ./vim/coc-settings.json;
+      target = ".vim/coc-settings.json";
+    };
+
+    coc-mappings = {
+      source = ./vim/coc-mappings.vim;
+      target = ".vim/coc-mappings.vim";
+    };
   };
 
   # Home Manager can also manage your environment variables through
@@ -77,8 +91,10 @@
     enable = true;
     defaultEditor = true;
     plugins = [
+      pkgs.vimPlugins.catppuccin-vim
       pkgs.vimPlugins.fzfWrapper
       pkgs.vimPlugins.coc-nvim
+      pkgs.vimPlugins.coc-json
     ];
     extraConfig = builtins.readFile ./vim/vimrc;
   };

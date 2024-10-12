@@ -89,6 +89,9 @@ set laststatus=2
 set showmode " Show the current mode
 set showcmd " Show typed keys in status line
 
+set termguicolors
+colorscheme catppuccin_mocha
+
 " Buffer navigation
 nnoremap <Leader>] :bnext<CR>
 nnoremap <Leader>[ :bprevious<CR>
@@ -107,28 +110,9 @@ if executable('fzf')
   nnoremap <Leader>b :FZFB!<CR>
 endif
 
-" ALE
-" These need to be defined before loading plugins
-let g:ale_completion_enabled=1
-set omnifunc=ale#completion#OmniFunc
-
 " Plugin loading
 packloadall
 silent! helptags ALL
-
-if exists(":ALEInfo")
-  nnoremap <Leader>ag :ALEGoToDefinition<CR>
-  nnoremap <Leader>ar :ALEFindReferences -quickfix<CR>
-  nnoremap <Leader>af :ALEFirst<CR>
-  nnoremap <Leader>an :ALENext<CR>
-
-  call ale#linter#Define('cf', {
-  \   'name': 'ColdFusion CFM',
-  \   'lsp': 'socket',
-  \   'address': 'localhost:5003',
-  \   'project_root': getcwd(),
-  \})
-endif
 
 " Make a new scratch buffer
 function! MakeScratch()
@@ -149,3 +133,11 @@ nnoremap <Leader>sc :call MakeScratch()<CR>
 if filereadable('./saeid/project.vim')
   source ./saeid/project.vim
 endif
+
+source ~/.vim/coc-mappings.vim
+
+highlight Normal guibg=NONE
+highlight CocFloating ctermbg=DarkGrey
+highlight CocMenuSel ctermfg=Blue
+highlight CocSearch ctermfg=Cyan
+
