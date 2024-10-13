@@ -21,6 +21,7 @@
     pkgs.ripgrep
     pkgs.fzf
     pkgs.nodejs
+    pkgs.timewarrior
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
