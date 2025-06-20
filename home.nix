@@ -23,6 +23,7 @@
     pkgs.nodejs
     pkgs.timewarrior
     pkgs.taskwarrior3
+    pkgs.jq
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
