@@ -90,8 +90,12 @@ in
 
   programs.git = {
     enable = true;
-    userName = user.fullName;
-    userEmail = user.email;
+    settings = {
+      user = {
+        name = user.fullName;
+        email = user.email;
+      };
+    };
   };
 
   programs.vim = {
@@ -99,10 +103,32 @@ in
     defaultEditor = true;
     plugins = [
       pkgs.vimPlugins.catppuccin-vim
-      pkgs.vimPlugins.fzfWrapper
+      pkgs.vimPlugins.fzf-wrapper
       pkgs.vimPlugins.coc-nvim
       pkgs.vimPlugins.coc-json
     ];
     extraConfig = builtins.readFile ./vim/vimrc;
+  };
+
+  programs.neovim = {
+    enable = true;
+    withRuby = false;
+    withPython3 = false;
+    initLua = builtins.readFile ./nvim/init.lua;
+    plugins = [
+      pkgs.vimPlugins.catppuccin-nvim
+      pkgs.vimPlugins.plenary-nvim
+      pkgs.vimPlugins.telescope-fzf-native-nvim
+      pkgs.vimPlugins.telescope-nvim
+      pkgs.vimPlugins.nvim-lspconfig
+      {
+        plugin = pkgs.vimPlugins.nvim-jdtls;
+        runtime = {
+          "ftplugin/java.lua" = {
+            source = ./nvim/ftplugin/java.lua;
+          };
+        };
+      }
+    ];
   };
 }

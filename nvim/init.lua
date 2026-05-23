@@ -105,24 +105,25 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 --
 -- See `:h :packadd`, `:h vim.pack`
 
-local package_hooks = function(event)
-  local name, kind = event.data.spec.name, event.data.kind
-
-  if name == 'telescope-fzf-native' and (kind == 'install' or kind == 'update') then
-    vim.system({ 'make' }, { cwd = event.data.path })
-  end
-end
-
-vim.api.nvim_create_autocmd('PackChanged', { callback = package_hooks })
-
-vim.pack.add({
-  { src = "https://github.com/catppuccin/nvim", name = "catppuccin" },
-  { src = "https://github.com/nvim-lua/plenary.nvim", name = "plenary" },
-  { src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim", name = "telescope-fzf-native" },
-  { src = "https://github.com/nvim-telescope/telescope.nvim", name = "telescope" },
-  { src = "https://github.com/neovim/nvim-lspconfig" },
-  { src = "https://codeberg.org/mfussenegger/nvim-jdtls", name = "nvim-jdtls" }
-})
+---- Uncomment if not using nix home-manager:
+---- local package_hooks = function(event)
+----   local name, kind = event.data.spec.name, event.data.kind
+----
+----   if name == 'telescope-fzf-native' and (kind == 'install' or kind == 'update') then
+----     vim.system({ 'make' }, { cwd = event.data.path })
+----   end
+---- end
+----
+---- vim.api.nvim_create_autocmd('PackChanged', { callback = package_hooks })
+----
+---- vim.pack.add({
+----   { src = "https://github.com/catppuccin/nvim", name = "catppuccin" },
+----   { src = "https://github.com/nvim-lua/plenary.nvim", name = "plenary" },
+----   { src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim", name = "telescope-fzf-native" },
+----   { src = "https://github.com/nvim-telescope/telescope.nvim", name = "telescope" },
+----   { src = "https://github.com/neovim/nvim-lspconfig" },
+----   { src = "https://codeberg.org/mfussenegger/nvim-jdtls", name = "nvim-jdtls" }
+---- })
 
 local telescope = require('telescope')
 local telescope_builtin = require('telescope.builtin')
