@@ -23,6 +23,7 @@ in
   home.packages = [
     pkgs.ripgrep
     pkgs.fzf
+    pkgs.fd
     pkgs.nodejs
     pkgs.timewarrior
     pkgs.taskwarrior3
